@@ -18,7 +18,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "start-storybook -p 9999",
-    "build-storybook": "npm run build:css && build-storybook"
+    "build-storybook": "npm run build:css && build-storybook",
+    "pub:patch": "npm version patch && npm publish",
+    "pub:minor": "npm version minor && npm publish",
+    "pub:major": "npm version major && npm publish",
+    "postpublish": "git push --follow-tags"
   },
   "author": "John Martin R. Disuanco",
   "repository": {
