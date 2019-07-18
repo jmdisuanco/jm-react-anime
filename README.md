@@ -1,6 +1,8 @@
 # JM's react-animejs Component
 
-React Wrapper for animeJS
+A React animation library for creating amazing React App.
+
+[JM's react-animejs](docs/assets/react-animejs-hero-demo.gif "JM's react-animejs")
 
 ## Getting Started
 
@@ -22,12 +24,11 @@ Say what the step will be
 npm i react-animejs
 ```
 
-or 
+or
 
 ```
 yarn add react-animejs
 ```
-
 
 ## Usage
 
@@ -35,7 +36,7 @@ yarn add react-animejs
 
 ```
 import ReactAnime from 'react-animejs'
-const {Anime, stagger} = ReactAnime   
+const {Anime, stagger} = ReactAnime
 ```
 
 - Basic Usage
@@ -52,7 +53,7 @@ const {Anime, stagger} = ReactAnime
             }
         >
             <div id ='Box' style={{height:50, width:50, background:'#d3d'}}></div>
-  </Anime>  
+  </Anime>
 ```
 
 - Working with Keyframe
@@ -91,15 +92,15 @@ const {Anime, stagger} = ReactAnime
 ```
 <Anime
       initial={[
-        { //1st segment 
+        { //1st segment
           targets: ".tl_square",
           translateX: 250
         },
-        { //2nd 
+        { //2nd
           targets: ".tl_circle",
           translateX: 250
         },
-        { //3rd 
+        { //3rd
           targets: ".tl_triangle",
           translateX: 250
         }
@@ -107,9 +108,12 @@ const {Anime, stagger} = ReactAnime
     >
 
 ```
+
 - With Controller Scrubber
- 
- important:  use `setMeta` to `<Anime>` compontent like `<Anime setMeta={setMea} ...`
+
+[JM's react-animejs](docs/assets/react-animejs-scrubber-demo.gif "JM's react-animejs")
+
+important: use `setMeta` to `<Anime>` compontent like `<Anime setMeta={setMea} ...`
 
 ```
 const ControlledDemo = () => {
@@ -201,8 +205,9 @@ const ControlledDemo = () => {
 
 
 ```
+
 - Events
-remember to place `_` in front of event like `_onClick` to call anime on click event
+  remember to place `_` in front of event like `_onClick` to call anime on click event
 
 ```
  <Anime
@@ -228,7 +233,7 @@ remember to place `_` in front of event like `_onClick` to call anime on click e
 ```
 
 - Component type
-by default Anime Components are `<div>` but you can declare the type for the component like `button`
+  by default Anime Components are `<div>` but you can declare the type for the component like `button`
 
 ```
 <Anime
@@ -278,38 +283,36 @@ by default Anime Components are `<div>` but you can declare the type for the com
     </Anime>
 
 ```
+
 ## Properties
 
+| Property       | Description                                                       | Type                               | Optional |
+| -------------- | ----------------------------------------------------------------- | ---------------------------------- | -------- |
+| setMeta        | use this to pull in progress of the Anime Component               | state object                       | true     |
+| iniital        | animation that will run on the initial rendering of the component | anime object                       | true     |
+| \_onUpdate     | animation that will run on every update of the Anime Component    | anime object                       | true     |
+| animeConfig    | configuration of the Anime of component                           | object                             | true     |
+| explode        | chop the string into words or characters                          | string `'characters'` or `'words'` |          |
+| explodeOptions | options for the exloded elements                                  | object `{{name:'atomic'}}`         |          |
 
-|Property| Description |Type| Optional
-|--|--|--|--|
-|setMeta| use this to pull in progress of the Anime Component |state object|true|
-|iniital | animation that will run on the initial rendering of the component| anime object| true
-|_onUpdate| animation that will run on every update of the Anime Component | anime object| true
-|animeConfig| configuration of the Anime of component |object| true
-|explode| chop the string into words or characters | string `'characters'` or `'words'`||
-|explodeOptions| options for the exloded elements | object `{{name:'atomic'}}`||
 ## Currently supported events
 
-| | | | | |
-|--| --| --| --| --|  
-| onClick | onContextMenu | onDoubleClick | onDrag | onDragEnd |
-| onDragEnter | onDragExit | onDragLeave | onDragOver | onDragStart | 
-|onDrop | onMouseDown | onMouseEnter | onMouseLeave | onMouseMove | 
-|onMouseOut | onMouseOver | onMouseUp|
-
+|             |               |               |              |             |
+| ----------- | ------------- | ------------- | ------------ | ----------- |
+| onClick     | onContextMenu | onDoubleClick | onDrag       | onDragEnd   |
+| onDragEnter | onDragExit    | onDragLeave   | onDragOver   | onDragStart |
+| onDrop      | onMouseDown   | onMouseEnter  | onMouseLeave | onMouseMove |
+| onMouseOut  | onMouseOver   | onMouseUp     |
 
 ## Contributing
+
 - star this repo
 - contribute to the code just `fork` and issue a `pull request`
 - share to your fellow devs
 
-
 ## Authors
 
-* **JM Disuanco** - *React-AnimeJS component* - [JM Disuanco](https://jm.disuan.co)
-
-
+- **JM Disuanco** - _React-AnimeJS component_ - [JM Disuanco](https://jm.disuan.co)
 
 ## License
 
@@ -317,4 +320,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Julian Garnier for his amazing AnimeJS library
+- Julian Garnier for his amazing AnimeJS library

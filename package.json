@@ -20,9 +20,10 @@
     "start": "start-storybook -p 9999",
     "build-storybook": "npm run build:css && build-storybook"
   },
-  "reactSnap": {
-    "source": "build",
-    "inlineCss": false
+  "author": "John Martin R. Disuanco",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmdisuanco/jm-react-anime"
   },
   "eslintConfig": {
     "extends": "react-app"

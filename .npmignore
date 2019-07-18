@@ -5,3 +5,5 @@ scripts
 stories
 package-lock.json
 tailwind.config.json
+docs
+build.sh
