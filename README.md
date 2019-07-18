@@ -1,8 +1,10 @@
-# JM's react-animejs Component
+# JM's react-animejs
 
 A React animation library for creating amazing React App.
 
-[JM's react-animejs](docs/assets/react-animejs-hero-demo.gif "JM's react-animejs")
+<img src="docs/assets/react-animejs-hero-demo.gif" alt="react-animejs" width="80%"/>
+
+[Live demo](https://jmdisuanco.github.io/jm-react-anime/)
 
 ## Getting Started
 
@@ -111,7 +113,7 @@ const {Anime, stagger} = ReactAnime
 
 - With Controller Scrubber
 
-[JM's react-animejs](docs/assets/react-animejs-scrubber-demo.gif "JM's react-animejs")
+<img src="docs/assets/react-animejs-scrubber-demo.gif" alt="react-animejs scrubber demo" width="80%"/>
 
 important: use `setMeta` to `<Anime>` compontent like `<Anime setMeta={setMea} ...`
 
@@ -297,12 +299,12 @@ const ControlledDemo = () => {
 
 ## Currently supported events
 
-|             |               |               |              |             |
-| ----------- | ------------- | ------------- | ------------ | ----------- |
-| onClick     | onContextMenu | onDoubleClick | onDrag       | onDragEnd   |
-| onDragEnter | onDragExit    | onDragLeave   | onDragOver   | onDragStart |
-| onDrop      | onMouseDown   | onMouseEnter  | onMouseLeave | onMouseMove |
-| onMouseOut  | onMouseOver   | onMouseUp     |
+|               |                 |                 |                |               |
+| ------------- | --------------- | --------------- | -------------- | ------------- |
+| \_onClick     | \_onContextMenu | \_onDoubleClick | \_onDrag       | \_onDragEnd   |
+| \_onDragEnter | \_onDragExit    | \_onDragLeave   | \_onDragOver   | \_onDragStart |
+| \_onDrop      | \_onMouseDown   | \_onMouseEnter  | \_onMouseLeave | \_onMouseMove |
+| \_onMouseOut  | \_onMouseOver   | \_onMouseUp     |
 
 ## Contributing
 
