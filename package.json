@@ -26,10 +26,19 @@
     "postpublish": "git push --follow-tags"
   },
   "author": "John Martin R. Disuanco",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/jmdisuanco/jm-react-anime"
   },
+  "keywords": [
+    "animejs",
+    "anime",
+    "react-anime",
+    "react-animejs",
+    "animation",
+    "jm-react-anime"
+  ],
   "homepage": "https://jmdisuanco.github.io/jm-react-anime",
   "eslintConfig": {
     "extends": "react-app"
