@@ -1,5 +1,5 @@
 {
-  "name": "jm-react-anime",
+  "name": "react-animejs",
   "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
