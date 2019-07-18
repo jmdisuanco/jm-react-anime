@@ -8,8 +8,6 @@ A React animation library for creating amazing React App.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 ```
@@ -19,8 +17,6 @@ React 16.8 and above
 ### Installing
 
 On your React project directory run
-
-Say what the step will be
 
 ```
 npm i react-animejs
@@ -113,7 +109,7 @@ const {Anime, stagger} = ReactAnime
 
 - With Controller Scrubber
 
-<img src="docs/assets/react-animejs-scrubber-demo.gif" alt="react-animejs scrubber demo" width="80%"/>
+<img src="docs/assets/react-animejs-scrubber-demo.gif" alt="react-animejs scrubber demo" width="250"/>
 
 important: use `setMeta` to `<Anime>` compontent like `<Anime setMeta={setMea} ...`
 
@@ -310,7 +306,7 @@ const ControlledDemo = () => {
 
 - star this repo
 - contribute to the code just `fork` and issue a `pull request`
-- share to your fellow devs
+- share to fellow devs
 
 ## Authors
 
