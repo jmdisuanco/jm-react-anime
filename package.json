@@ -37,7 +37,12 @@
     "react-anime",
     "react-animejs",
     "animation",
-    "jm-react-anime"
+    "jm-react-anime",
+    "tween",
+    "timeline",
+    "keyframe",
+    "motion",
+    "animate"
   ],
   "homepage": "https://jmdisuanco.github.io/jm-react-anime",
   "eslintConfig": {
