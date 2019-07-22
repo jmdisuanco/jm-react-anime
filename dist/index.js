@@ -1,6 +1,6 @@
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
-import React, { useLayoutEffect, useState } from 'react';
-import anime from 'animejs';
+import React, { useLayoutEffect, useState } from "react";
+import anime from "animejs";
 
 var Anime = function Anime(props) {
   var id = props.id,
@@ -12,12 +12,12 @@ var Anime = function Anime(props) {
       control = props.control,
       setMeta = props.setMeta;
 
-  var _useState = useState(''),
+  var _useState = useState(""),
       _useState2 = _slicedToArray(_useState, 2),
       state = _useState2[0],
       setState = _useState2[1];
 
-  var _useState3 = useState(''),
+  var _useState3 = useState(""),
       _useState4 = _slicedToArray(_useState3, 2),
       lastControl = _useState4[0],
       setLastControl = _useState4[1];
@@ -27,30 +27,29 @@ var Anime = function Anime(props) {
       player = _useState6[0],
       setPLayer = _useState6[1];
 
-  var TL;
   var words = [];
   var chars = [];
   var explodedChildren = [];
 
   if (props.explode) {
     React.Children.map(children, function (child) {
-      if (typeof child === 'string') {
-        words = child.split(' ');
-        chars = child.split('');
+      if (typeof child === "string") {
+        words = child.split(" ");
+        chars = child.split("");
       }
     });
     var _options = {
       className: explodeOptions.name,
       style: {
-        display: 'inline-block'
+        display: "inline-block"
       }
     };
 
-    if (props.explode === 'characters') {
+    if (props.explode === "characters") {
       chars.map(function (_char) {
         explodedChildren.push(React.createElement("span", _options, _char === " " ? "\xA0" : _char));
       });
-    } else if (props.explode === 'words') {
+    } else if (props.explode === "words") {
       words.map(function (word) {
         explodedChildren.push(React.createElement("span", _options, word));
         explodedChildren.push(React.createElement("span", _options, "\xA0"));
@@ -65,7 +64,7 @@ var Anime = function Anime(props) {
 
     if (mode.length > 1) {
       var config = animeConfig ? animeConfig : {
-        easing: 'easeOutExpo',
+        easing: "easeOutExpo",
         duration: 750
       };
 
@@ -92,18 +91,17 @@ var Anime = function Anime(props) {
   };
 
   useLayoutEffect(function () {
-    setPLayer(Play('initial'));
+    setPLayer(Play("initial"));
   }, []);
   useLayoutEffect(function () {
     if (props[state] === undefined) {
-      if (props['_onUpdate']) {
-        Play('_onUpdate');
-        return;
+      if (props["_onUpdate"]) {
+        Play("_onUpdate");
       }
 
       if (control) {
         if (lastControl != control) {
-          if (typeof control != 'object') {
+          if (typeof control != "object") {
             setLastControl(control);
             player[control]();
           } else {
@@ -116,133 +114,133 @@ var Anime = function Anime(props) {
       Play(state);
     }
 
-    setState('');
+    setState("");
   });
   var options = {
     id: id,
     style: style,
     className: className,
     onClick: function onClick(e) {
-      setState('_onClick');
+      if (props["_onClick"]) setState("_onClick");
 
       try {
         props.onClick(e);
       } catch (e) {}
     },
     onContextMenu: function onContextMenu(e) {
-      setState('_onContextMenu');
+      if (props["_onContextMenu"]) setState("_onContextMenu");
 
       try {
         props.onContextMenu(e);
       } catch (e) {}
     },
     onDoubleClick: function onDoubleClick(e) {
-      setState('_onDoubleClick');
+      if (props["_onDoubleClick"]) setState("_onDoubleClick");
 
       try {
         props.onDoubleClick(e);
       } catch (e) {}
     },
     onDrag: function onDrag(e) {
-      setState('_onDrag');
+      if (props["_onDrag"]) setState("_onDrag");
 
       try {
         props.onDrag(e);
       } catch (e) {}
     },
     onDragEnd: function onDragEnd(e) {
-      setState('_onDragEnd');
+      if (props["_onDragEnd"]) setState("_onDragEnd");
 
       try {
         props.onDragEnd(e);
       } catch (e) {}
     },
     onDragEnter: function onDragEnter(e) {
-      setState('_onDragEnter');
+      if (props["_onDragEnter"]) setState("_onDragEnter");
 
       try {
         props.onDragEnter(e);
       } catch (e) {}
     },
     onDragExit: function onDragExit(e) {
-      setState('_onDragExit');
+      if (props["_onDragExit"]) setState("_onDragExit");
 
       try {
         props.onDragExit(e);
       } catch (e) {}
     },
     onDragLeave: function onDragLeave(e) {
-      setState('_onDragLeave');
+      if (props["_onDragLeave"]) setState("_onDragLeave");
 
       try {
         props.onDragLeave(e);
       } catch (e) {}
     },
     onDragOver: function onDragOver(e) {
-      setState('_onDragOver');
+      if (props["_onDragOver"]) setState("_onDragOver");
 
       try {
         props.onDragOver(e);
       } catch (e) {}
     },
     onDragStart: function onDragStart(e) {
-      setState('_onDragStart');
+      if (props["_onDragStart"]) setState("_onDragStart");
 
       try {
         props.onDragStart(e);
       } catch (e) {}
     },
     onDrop: function onDrop(e) {
-      setState('_onDrop');
+      if (props["_onDrop"]) setState("_onDrop");
 
       try {
         props.onDrop(e);
       } catch (e) {}
     },
     onMouseDown: function onMouseDown(e) {
-      setState('_onMouseDown');
+      if (props["_onMouseDown"]) setState("_onMouseDown");
 
       try {
         props.onMouseDown(e);
       } catch (e) {}
     },
     onMouseEnter: function onMouseEnter(e) {
-      setState('_onMouseEnter');
+      if (props["_onMouseEnter"]) setState("_onMouseEnter");
 
       try {
         props.onMouseEnter(e);
       } catch (e) {}
     },
     onMouseLeave: function onMouseLeave(e) {
-      setState('_onMouseLeave');
+      if (props["_onMouseLeave"]) setState("_onMouseLeave");
 
       try {
         props.onMouseLeave(e);
       } catch (e) {}
     },
     onMouseMove: function onMouseMove(e) {
-      setState('_onMouseMove');
+      if (props["_onMouseMove"]) setState("_onMouseMove");
 
       try {
         props.onMouseMove(e);
       } catch (e) {}
     },
     onMouseOut: function onMouseOut(e) {
-      setState('_onMouseOut');
+      if (props["_onMouseOut"]) setState("_onMouseOut");
 
       try {
         props.onMouseOut(e);
       } catch (e) {}
     },
     onMouseOver: function onMouseOver(e) {
-      setState('_onMouseOver');
+      if (props["_onMouseOver"]) setState("_onMouseOver");
 
       try {
         props.onMouseOver(e);
       } catch (e) {}
     },
     onMouseUp: function onMouseUp(e) {
-      setState('_onMouseUp');
+      if (props["_onMouseUp"]) setState("_onMouseUp");
 
       try {
         props.onMouseUp(e);

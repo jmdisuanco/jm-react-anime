@@ -14,7 +14,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "build": "./build",
+    "build": "./scripts/build.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "start-storybook -p 9999",

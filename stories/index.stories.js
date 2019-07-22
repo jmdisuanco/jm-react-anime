@@ -14,6 +14,7 @@ const SuperDiv= ({children}) =>{
 
   const animation = [{
     targets:'.atomic',
+    translateX:'+=10',
     color: '#d3d',
     easing: 'easeInOutSine',
     delay:stagger(50)
