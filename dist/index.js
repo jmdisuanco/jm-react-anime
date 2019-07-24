@@ -100,8 +100,8 @@ var Anime = function Anime(props) {
       }
 
       if (control) {
-        if (lastControl != control) {
-          if (typeof control != "object") {
+        if (lastControl !== control) {
+          if (typeof control !== "object") {
             setLastControl(control);
             player[control]();
           } else {
@@ -115,6 +115,11 @@ var Anime = function Anime(props) {
     }
 
     setState("");
+    return function () {
+      if (props["_onUnmount"]) {
+        Play("_onUnmount");
+      }
+    };
   });
   var options = {
     id: id,
