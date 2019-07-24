@@ -79,8 +79,8 @@ const Anime = props => {
         Play("_onUpdate");
       }
       if (control) {
-        if (lastControl != control) {
-          if (typeof control != "object") {
+        if (lastControl !== control) {
+          if (typeof control !== "object") {
             setLastControl(control);
             player[control]();
           } else {
@@ -93,6 +93,11 @@ const Anime = props => {
       Play(state);
     }
     setState("");
+    return () => {
+      if (props["_onUnmount"]) {
+        Play("_onUnmount");
+      }
+    };
   });
 
   const options = {
@@ -214,7 +219,6 @@ const Anime = props => {
     props.explode === undefined ? children : explodedChildren
   );
 };
-
 const ReactAnime = {
   Anime: Anime,
   stagger: anime.stagger

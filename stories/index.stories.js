@@ -1,20 +1,32 @@
-import React,{useState} from 'react';
-import { storiesOf, addDecorator  } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { withKnobs, text, select  } from '@storybook/addon-knobs';
+import React,{useState,useRef} from 'react';
+import { storiesOf } from '@storybook/react';
 import ReactAnime from '../src/lib'
 const {Anime, stagger} = ReactAnime
-import style from './style.css'
-const Box = ()=>{
-  return <div id ='Box' style={{height:50, width:50, background:'#d3d'}}></div>
+import './style.css'
+const Box = ({children})=>{
+  return <div id ='Box' style={{height:50, width:50, background:'#d3d'}}>{children}</div>
 }
 
+const Self = ()=>{
+  const mySelf =  useRef(0)
+  mySelf.current = mySelf.current + 1;
+    return (<Anime
+    type= 'div'
+    id={`me_${mySelf.current}`}
+    style={{width:50,height:80,background:'blue'}}
+    initial={[{
+      targets:`#me_${mySelf.current}`,
+      height:'50px',
+      easing:'spring',
+      duration:500
+    }]}
+    >
+    </Anime>  )
+}
 const SuperDiv= ({children}) =>{
   const random = (x) =>  {return Math.random() * x}
-
   const animation = [{
     targets:'.atomic',
-    translateX:'+=10',
     color: '#d3d',
     easing: 'easeInOutSine',
     delay:stagger(50)
@@ -25,7 +37,7 @@ const SuperDiv= ({children}) =>{
     translateY:() => {return random(10)},
     scale:1.2,
     rotate: ()=> {return random(60)},
-    loop:true,
+    loop:2,
     direction:'alternate',
     easing:'easeInOutSine',
     duration:810
@@ -45,6 +57,88 @@ const SuperDiv= ({children}) =>{
   )
 }
 
+const Ghost = ({children})=>{
+  const prev = useRef([])
+  let style = Object.assign({position:'absolute',zIndex:-1,top:0},children.props.style)
+  style.left = 0
+   let history = prev.current
+   history.push(React.cloneElement(children,{id:'Ghost',style}))
+   let ghost = history[0]
+   if(history.length > 1) history.splice(0,1)
+   return(
+     ghost || {}
+   )
+}
+
+
+const OnUnmountAnime = ({children,count}) =>{
+  
+  const animation = [
+    {
+    targets:'#BoxSlide',
+    translateX:-100,
+    duration:0
+  },
+  {
+    targets:'#BoxSlide',
+    translateX:100,
+    easing:'easeInOutSine',
+    duration:1000
+  }]
+
+
+  const unmountAnimation =[{
+    targets:'#Ghost',
+    translateX:100,
+    duration:0
+  },
+  {
+    targets:'#Ghost',
+    translateX:0,
+    opacity:0,
+    easing:'easeInOutSine',
+    duration:1000
+  },
+  {
+    targets:'#Ghost',
+    zIndex:-1,
+    opacity:1,
+    duration:0,
+    delay:1000
+  }
+]
+
+  return(
+  <Anime
+  style={{fontSize:'2em',color:'#d3d3d3'}}
+  id="self"
+  initial={[{targets:'#BoxSlide', translateX:-100}]}
+  _onUpdate = {animation}
+  _onUnmount = {unmountAnimation}
+
+  >
+  {children}<Ghost>{children}</Ghost></Anime>  
+  )
+}
+
+const OnUnmountDemo = ()=>{
+  let [count,setCount] = useState(0)
+  const handleClick = (method)=>{
+    method === 'inc' ? setCount(count+1) : setCount(count-1) 
+  }
+
+  return (<div style={{position:'relative'}}>
+    <OnUnmountAnime count={count}>
+      <div id='BoxSlide' style={{textAlign:'center',left:0,height:50, width:50, background:'#d3d'}}>{count}</div>
+    </OnUnmountAnime>
+  <div style={{position:'absolute',top:55,left:95}}>
+  <div className='button' onClick={()=> handleClick('dec')}>-</div>
+  <div className='button' onClick={()=> handleClick('inc')}>+</div>
+  </div>
+  
+</div>)
+}
+
 const InteractiveDemo = ()=>{
   const [text,setText] = useState('Type Here')
   const HandleInput = (e)=>{
@@ -52,11 +146,10 @@ const InteractiveDemo = ()=>{
 }
 
   return (<div>
-  <input value={text} onInput={HandleInput} />
-    <SuperDiv>{text}
-  </SuperDiv>
-
-</div>)
+  <input value={text} onChange={HandleInput} />
+    <SuperDiv>{text}</SuperDiv>
+</div>
+)
 }
 
 
@@ -195,7 +288,32 @@ const ControlledDemo = () =>{
                               </Anime>
 
                           ) )
-
+                          .add('Staggered', ()=> (
+                            <Anime 
+                            style={{width:300, background:'#d4d4d4'}}
+                            _onMouseEnter={[{
+                              targets: '#Box',
+                              backgroundColor:`rgba(255,0,22,0.5)`,
+                              translateX: 100,
+                              easing: 'spring',
+                              delay:stagger(80)
+                            }]}
+                            _onMouseLeave={[{
+                              targets: '#Box',
+                              backgroundColor:'#d3d',
+                              translateX: 0,
+                              easing: 'spring',
+                              delay:stagger(80)
+                            }]}
+                           
+                            
+                            >
+                              <Box
+                             
+                              /> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/>
+                            </Anime>
+                    
+                        ) )
 storiesOf('Timeline', module)
  .add('AutoPlay', ()=> (
                               <Anime 
@@ -223,7 +341,7 @@ storiesOf('Timeline', module)
 
                           ) )
       .add('Controlled', ()=> ( <ControlledDemo/> ) )
-
+     
  storiesOf('Events', module)
     .add('on Click', ()=> (
                               <Anime _onClick={[{
@@ -261,52 +379,11 @@ storiesOf('Timeline', module)
                               </Anime>
 
                           ) )
-.add('Staggered', ()=> (
-                            <Anime 
-                            style={{width:300, background:'#d4d4d4'}}
-                            _onMouseEnter={[{
-                              targets: '#Box',
-                              backgroundColor:`rgba(255,0,22,0.5)`,
-                              translateX: 100,
-                              easing: 'spring',
-                              delay:stagger(80)
-                            }]}
-                            _onMouseLeave={[{
-                              targets: '#Box',
-                              backgroundColor:'#d3d',
-                              translateX: 0,
-                              easing: 'spring',
-                              delay:stagger(80)
-                            }]}
-                           
-                            
-                            >
-                              <Box
-                             
-                              /> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/> <Box/>
-                            </Anime>
-
-                        ) )
-
-
-
-
-
-
+.add('On Unmount', ()=>(<OnUnmountDemo/>)  )
 
 storiesOf('Target', module)
   .add('Self', ()=>(
-    <Anime
-    type= 'div'
-    id="self" 
-    style={{width:50,height:80,background:'blue'}}
-    initial={[{
-      targets:'#self',
-      height:'50px',
-      easing:'spring',
-      duration:500
-    }]}
-    ></Anime>  
+     <Self/>
   ) )
   .add('Children', ()=>(
     <Anime
