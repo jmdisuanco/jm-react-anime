@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jm-react-anime/main.css",
+    "main.js": "/jm-react-anime/main.1fd96ed4337aef27199a.bundle.js",
+    "main.css.map": "/jm-react-anime/main.css.map",
+    "main.js.map": "/jm-react-anime/main.1fd96ed4337aef27199a.bundle.js.map",
+    "runtime~main.js": "/jm-react-anime/runtime~main.1fd96ed4337aef27199a.bundle.js",
+    "runtime~main.js.map": "/jm-react-anime/runtime~main.1fd96ed4337aef27199a.bundle.js.map",
+    "vendors~main.js": "/jm-react-anime/vendors~main.1fd96ed4337aef27199a.bundle.js",
+    "vendors~main.js.map": "/jm-react-anime/vendors~main.1fd96ed4337aef27199a.bundle.js.map",
+    "iframe.html": "/jm-react-anime/iframe.html",
+    "precache-manifest.34d85168625eadd25f2383c311a6d148.js": "/jm-react-anime/precache-manifest.34d85168625eadd25f2383c311a6d148.js",
+    "service-worker.js": "/jm-react-anime/service-worker.js"
+  }
+}
