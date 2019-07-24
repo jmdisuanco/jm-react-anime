@@ -39,55 +39,54 @@ const {Anime, stagger} = ReactAnime
 
 - Basic Usage
 
-```
- <Anime initial={
-                [
-                {
-                    targets: '#Box',
-                    translateX: 50,
-                    easing: 'linear'
-                }
-                ]
-            }
-        >
-            <div id ='Box' style={{height:50, width:50, background:'#d3d'}}></div>
-  </Anime>
+```javascript
+<Anime
+  initial={[
+    {
+      targets: "#Box",
+      translateX: 50,
+      easing: "linear"
+    }
+  ]}
+>
+  <div id="Box" style={{ height: 50, width: 50, background: "#d3d" }} />
+</Anime>
 ```
 
 - Working with Keyframe
 
-```
+```javascript
 <Anime
-      initial={[
+  initial={[
+    {
+      targets: "#Box",
+      keyframes: [
         {
-          targets: "#Box",
-          keyframes: [
-            {
-              translateX: 50
-            },
-            {
-              translateY: 50
-            },
-            {
-              translateX: 0
-            },
-            {
-              translateY: 0
-            }
-          ],
-          // easing:'spring',
-          duration: 3500,
-          loop: true
+          translateX: 50
+        },
+        {
+          translateY: 50
+        },
+        {
+          translateX: 0
+        },
+        {
+          translateY: 0
         }
-      ]}
-    >
-      <Box />
+      ],
+      // easing:'spring',
+      duration: 3500,
+      loop: true
+    }
+  ]}
+>
+  <Box />
 </Anime>
 ```
 
 - Working with timeline
 
-```
+```javascript
 <Anime
       initial={[
         { //1st segment
@@ -113,11 +112,12 @@ const {Anime, stagger} = ReactAnime
 
 important: use `setMeta` to `<Anime>` compontent like `<Anime setMeta={setMea} ...`
 
-```
+```javascript
 const ControlledDemo = () => {
   const [control, setControl] = useState(null); //controller state
 
-  const [meta, setMeta] = useState({ //meta state of the player
+  const [meta, setMeta] = useState({
+    //meta state of the player
     control: control,
     progress: 0,
     currentTime: 0,
@@ -149,11 +149,19 @@ const ControlledDemo = () => {
           }
         ]}
       >
-        <div className="tl_square" style={{ height: 50, width: 50, background: "#d3f454" }}></div>
+        <div
+          className="tl_square"
+          style={{ height: 50, width: 50, background: "#d3f454" }}
+        />
         <div
           className="tl_circle"
-          style={{ height: 50, width: 50, background: "#d3f454", borderRadius: "50%" }}
-        ></div>
+          style={{
+            height: 50,
+            width: 50,
+            background: "#d3f454",
+            borderRadius: "50%"
+          }}
+        />
         <div
           className="tl_triangle"
           style={{
@@ -162,7 +170,7 @@ const ControlledDemo = () => {
             background: "#d3f454",
             clipPath: "polygon(50% 0, 0 100%, 100% 100%)"
           }}
-        ></div>
+        />
       </Anime>
       <div
         className="button"
@@ -196,99 +204,96 @@ const ControlledDemo = () => {
         className="slider"
         id="myRange"
         onChange={e => console.log(setControl(["seek", e.currentTarget.value]))}
-      ></input>
+      />
     </div>
   );
 };
-
-
 ```
 
 - Events
   remember to place `_` in front of event like `_onClick` to call anime on click event
 
-```
- <Anime
-      style={{ width: 100 }}
-      _onMouseEnter={[
-        {
-          targets: "#Box",
-          backgroundColor: `rgba(255,0,22,0.5)`,
-          easing: "linear"
-        }
-      ]}
-      _onMouseLeave={[
-        {
-          targets: "#Box",
-          backgroundColor: "#d3d",
-          easing: "linear"
-        }
-      ]}
-    >
-      <Box />
-    </Anime>
-
+```javascript
+<Anime
+  style={{ width: 100 }}
+  _onMouseEnter={[
+    {
+      targets: "#Box",
+      backgroundColor: `rgba(255,0,22,0.5)`,
+      easing: "linear"
+    }
+  ]}
+  _onMouseLeave={[
+    {
+      targets: "#Box",
+      backgroundColor: "#d3d",
+      easing: "linear"
+    }
+  ]}
+>
+  <Box />
+</Anime>
 ```
 
 - Component type
   by default Anime Components are `<div>` but you can declare the type for the component like `button`
 
-```
+```javascript
 <Anime
-      type="button" // <------ Like this
-      id="self"
-      onClick={() => {
-        console.log("clicked");
-      }}
-      style={{ position: "absolute", width: 50, height: 80, background: "#d5d5d5" }}
-      initial={[
-        {
-          targets: "#self",
-          height: "150px",
-          width: "150px",
-          translateX: 100,
-          translateY: 300,
-          easing: "spring"
-        }
-      ]}
-      _onClick={[
-        {
-          targets: "#self",
-          scale: 0.5,
-          easing: "easeInOutSine",
-          duration: 2000
-        }
-      ]}
-      _onMouseEnter={[
-        {
-          targets: "#self",
-          background: "#d3d",
-          easing: "easeInOutSine",
-          direction: "alternate",
-          duration: 2000
-        }
-      ]}
-      _onMouseLeave={[
-        {
-          targets: "#self",
-          background: "#d5d5d5",
-          easing: "easeInOutSine",
-          duration: 2000
-        }
-      ]}
-    >
-      Default Button
-    </Anime>
-
+  type="button" // <------ Like this
+  id="self"
+  onClick={() => {
+    console.log("clicked");
+  }}
+  style={{ position: "absolute", width: 50, height: 80, background: "#d5d5d5" }}
+  initial={[
+    {
+      targets: "#self",
+      height: "150px",
+      width: "150px",
+      translateX: 100,
+      translateY: 300,
+      easing: "spring"
+    }
+  ]}
+  _onClick={[
+    {
+      targets: "#self",
+      scale: 0.5,
+      easing: "easeInOutSine",
+      duration: 2000
+    }
+  ]}
+  _onMouseEnter={[
+    {
+      targets: "#self",
+      background: "#d3d",
+      easing: "easeInOutSine",
+      direction: "alternate",
+      duration: 2000
+    }
+  ]}
+  _onMouseLeave={[
+    {
+      targets: "#self",
+      background: "#d5d5d5",
+      easing: "easeInOutSine",
+      duration: 2000
+    }
+  ]}
+>
+  Default Button
+</Anime>
 ```
 
 ## Properties
 
 | Property       | Description                                                       | Type                               | Optional |
 | -------------- | ----------------------------------------------------------------- | ---------------------------------- | -------- |
-| setMeta        | use this to pull in progress of the Anime Component               | state object                       | true     |
-| iniital        | animation that will run on the initial rendering of the component | anime object                       | true     |
-| \_onUpdate     | animation that will run on every update of the Anime Component    | anime object                       | true     |
+| setMeta        | use this to pull in progress of the Anime Component               | object                             | true     |
+| iniital        | animation that will run on the initial rendering of the component | object                             | true     |
+| \_onUpdate     | animation that will run on every update of a component            | object                             | true     |
+| \_onUnmount    | animation that will run on every unmount event of a component     | object                             | true     |
 | animeConfig    | configuration of the Anime of component                           | object                             | true     |
 | explode        | chop the string into words or characters                          | string `'characters'` or `'words'` |          |
 | explodeOptions | options for the exloded elements                                  | object `{{name:'atomic'}}`         |          |
