@@ -8,10 +8,12 @@
     "README.md"
   ],
   "dependencies": {
-    "animejs": "^3.0.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "^3.4.0"
+    "animejs": "^3.0.1"
+  },
+  "peerDependencies": {
+    "react": "^16.x",
+    "react-dom": "^16.x",
+    "react-scripts": "^3.x"
   },
   "scripts": {
     "build": "./scripts/build.sh",
